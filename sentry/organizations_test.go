@@ -448,9 +448,9 @@ func TestOrganizationService_Create_AgreeTerms(t *testing.T) {
 	mux.HandleFunc("/api/0/organizations/", func(w http.ResponseWriter, r *http.Request) {
 		assertMethod(t, "POST", r)
 		assertPostJSON(t, map[string]interface{}{
-			"name":       "The Interstellar Jurisdiction",
-			"slug":       "the-interstellar-jurisdiction",
-			"agreeTerms": true,
+			"name": "The Interstellar Jurisdiction",
+			"slug": "the-interstellar-jurisdiction",
+			// "agreeTerms": true,
 		}, r)
 		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprint(w, `{
@@ -462,9 +462,9 @@ func TestOrganizationService_Create_AgreeTerms(t *testing.T) {
 
 	client := NewClient(httpClient, nil, "")
 	params := &CreateOrganizationParams{
-		Name:       "The Interstellar Jurisdiction",
-		Slug:       "the-interstellar-jurisdiction",
-		AgreeTerms: Bool(true),
+		Name: "The Interstellar Jurisdiction",
+		Slug: "the-interstellar-jurisdiction",
+		// AgreeTerms: Bool(true),
 	}
 	organization, _, err := client.Organizations.Create(params)
 	assert.NoError(t, err)
